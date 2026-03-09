@@ -50,6 +50,93 @@ All data used in this study are publicly available:
 - **PBMC dataset**: Genome Sequence Archive (GSA-Human: HRA004605)
 - **MOE dataset**: GEO (GSE185168, GSE157100)
 
+## 🧪 Quick Start with a Small Test Dataset
+
+To quickly test the decontamination workflow, you can use a publicly available PBMC dataset from 10x Genomics:
+
+- **Test Dataset**: [10x Genomics PBMC 3k (v3 Chemistry)](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-v-3-chemistry-3-standard-3-0-0)
+- **Expected Input**: The raw HDF5 file (e.g., `3k_pbmc_protein_v3_raw_feature_bc_matrix.h5`) containing the unfiltered feature-barcode matrix, which is the standard input for most decontamination tools like SoupX and CellBender.
+
+## 🛠️ Installation and Dependencies
+
+Setting up the environment for all seven tools requires both Python and R. Please ensure you have `Python (v3.13)` and `R (v4.4.0)` installed.
+
+### Python Environment
+
+We recommend using `conda` or `venv` to manage the Python environment.
+
+```bash
+# Create and activate a new conda environment
+conda create -n scrna_benchmark python=3.13
+conda activate scrna_benchmark
+# Install required Python packages
+pip install anndata==0.10.1 h5py==3.14.0 matplotlib==3.10.6 scanpy==1.9.3 \
+            scipy==1.13.0 seaborn==0.13.2 numpy==1.26.4 pandas==2.2.2 \
+            sceasy==0.0.7
+
+# Install decontamination tools
+## CellBender
+pip install cellbender==0.3.0
+
+## scAR
+pip install scar==0.7.0
+
+## FastCAR
+# Installation instructions may vary; refer to its repository.
+# Assuming it's available via pip:
+pip install FastCAR==0.1.0
+```
+### R Environment
+
+Run the following commands in an R console (v4.4.0) to install the required R packages and tools.
+
+```r
+# Install core packages from CRAN
+install.packages(c('dplyr', 'tidyr', 'ggplot2', 'ggrepel', 'reticulate', 'rhdf5'))
+
+# Install Seurat and its dependencies
+install.packages('Seurat')
+
+# Install BiocManager for Bioconductor packages
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+# Install Bioconductor packages
+BiocManager::install(c('DecontX', 'DropletUtils', 'SingleCellExperiment'))
+
+# Install GitHub packages
+## SoupX
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("constantAmateur/SoupX")
+
+## scCDC
+# Installation instruction for scCDC (v1.3) - typically from GitHub
+devtools::install_github("Czi-Y/scCDC") # Please verify the correct repository
+
+## CellClear (v0.0.3)
+# Installation instruction for CellClear - typically from GitHub
+devtools::install_github("xx/info/cellclear") # Please verify the correct repository
+```
+### Other Tools
+
+The following command-line tools are required for certain preprocessing steps:
+
+- **picard (3.4.0)**, **gatk4 (4.6.2.0)**, **samtools (1.22.1)**
+- These can be installed via `conda`:
+  ```bash
+  conda install -c bioconda picard=3.4.0 gatk4=4.6.2.0 samtools=1.22.1
+  ```
+
+## ⏱️ Expected Run Time
+
+**Not available.** The runtime for these tools varies dramatically based on the dataset size (number of cells and genes), available computational resources (CPU/GPU, memory), and the specific tool's algorithm. 
+
+## 📤 Expected Output
+
+The primary output of each decontamination tool is a **corrected count matrix**, which should have the same dimensions (genes x cells) as the input raw matrix but with ambient RNA contamination removed. The format of this output varies by tool (e.g., a new `.h5` file for CellBender, an updated Seurat object for SoupX).
+
+For a detailed example of the expected output structure and how it is used for downstream analysis and benchmarking (as shown in our manuscript figures), please refer to our analysis scripts.
+
 ## 🛠️ Software Versions
 
 **Python (v3.13)**: anndata(0.10.1), h5py(3.14.0), cellbender(0.3.0), scar(0.7.0), FastCAR(0.1.0), matplotlib(3.10.6), scanpy(1.9.3), scipy(1.13.0), seaborn(0.13.2), numpy(1.26.4), pandas(2.2.2), sceasy(0.0.7)
