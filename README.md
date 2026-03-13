@@ -36,7 +36,8 @@ For reproducibility of benchmark methods, metrics, and visualization, please ref
 ├── OSN/                            # Fig4,5,S3-S5
 │   ├── analysis/                    # Downsampling & depth analysis
 │   ├── decontamination/
-│   │   └── generate_corrected_matrix.ipynb  # Matrix generation
+│   │   └── generate_corrected_matrix.ipynb  # corrected_Matrix generation
+│   │   └── decontamination methods          # decontaminated_Matrix generation
 │   └── figures/
 │       ├── utils/                    # Helper functions
 │       ├── run_plot_contam_ratio.py  # Fig4C-E,H,I,L,M,5C-E,S4B,F
