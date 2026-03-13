@@ -59,7 +59,7 @@ To quickly test the decontamination workflow, you can use a publicly available P
 
 ## 🛠️ Installation and Dependencies
 
-Setting up the environment for all seven tools requires both Python and R. Please ensure you have `Python (v3.13)` and `R (v4.4.0)` installed.
+Setting up the environment for all 7 tools requires both Python and R. Please ensure you have `Python (v3.13)` and `R (v4.4.0)` installed.
 
 ### Python Environment
 
@@ -75,11 +75,16 @@ pip install anndata==0.10.1 h5py==3.14.0 matplotlib==3.10.6 scanpy==1.9.3 \
             sceasy==0.0.7
 
 # Install decontamination tools
+
 ## CellBender
 pip install cellbender==0.3.0
 
 ## scAR
-pip install scar==0.7.0
+conda install bioconda::scar
+
+## CellClear (v0.0.3)
+
+pip install CellClear
 
 ```
 ### R Environment
@@ -102,16 +107,11 @@ BiocManager::install(c('DecontX', 'DropletUtils', 'SingleCellExperiment'))
 
 # Install GitHub packages
 ## SoupX
-if (!require("devtools")) install.packages("devtools")
-devtools::install_github("constantAmateur/SoupX")
+install.packages('SoupX')
 
 ## scCDC
-# Installation instruction for scCDC (v1.3) - typically from GitHub
-devtools::install_github("Czi-Y/scCDC") # Please verify the correct repository
-
-## CellClear (v0.0.3)
-# Installation instruction for CellClear - typically from GitHub
-devtools::install_github("xx/info/cellclear") # Please verify the correct repository
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("ZJU-UoE-CCW-LAB/scCDC")
 
 ## FastCAR
 devtools::install_git("https://git.web.rug.nl/P278949/FastCAR")
@@ -130,12 +130,6 @@ The following command-line tools are required for certain preprocessing steps:
 ## ⏱️ Expected Run Time
 
 **Not available.** The runtime for these tools varies dramatically based on the dataset size (number of cells and genes), available computational resources (CPU/GPU, memory), and the specific tool's algorithm. 
-
-## 📤 Expected Output
-
-The primary output of each decontamination tool is a **corrected count matrix**, which should have the same dimensions (genes x cells) as the input raw matrix but with ambient RNA contamination removed. The format of this output varies by tool (e.g., a new `.h5` file for CellBender, an updated Seurat object for SoupX).
-
-For a detailed example of the expected output structure and how it is used for downstream analysis and benchmarking (as shown in our manuscript figures), please refer to our analysis scripts.
 
 ## 🛠️ Software Versions
 
