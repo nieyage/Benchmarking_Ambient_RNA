@@ -50,13 +50,6 @@ All data used in this study are publicly available:
 - **PBMC dataset**: Genome Sequence Archive (GSA-Human: HRA004605)
 - **MOE dataset**: GEO (GSE185168, GSE157100)
 
-## 🧪 Quick Start with a Small Test Dataset
-
-To quickly test the decontamination workflow, you can use a publicly available PBMC dataset from 10x Genomics:
-
-- **Test Dataset**: [10x Genomics PBMC 3k (v3 Chemistry)](https://www.10xgenomics.com/datasets/3-k-pbm-cs-from-a-healthy-donor-v-3-chemistry-3-standard-3-0-0)
-- **Expected Input**: The raw HDF5 file (e.g., `3k_pbmc_protein_v3_raw_feature_bc_matrix.h5`) containing the unfiltered feature-barcode matrix, which is the standard input for most decontamination tools like SoupX and CellBender.
-
 ## 🛠️ Installation and Dependencies
 
 Setting up the environment for all 7 tools requires both Python and R. Please ensure you have `Python (v3.13)` and `R (v4.4.0)` installed.
@@ -127,10 +120,6 @@ The following command-line tools are required for certain preprocessing steps:
   conda install -c bioconda picard=3.4.0 gatk4=4.6.2.0 samtools=1.22.1
   ```
 
-## ⏱️ Expected Run Time
-
-**Not available.** The runtime for these tools varies dramatically based on the dataset size (number of cells and genes), available computational resources (CPU/GPU, memory), and the specific tool's algorithm. 
-
 ## 🛠️ Software Versions
 
 **Python (v3.13)**: anndata(0.10.1), h5py(3.14.0), cellbender(0.3.0), scar(0.7.0), FastCAR(0.1.0), matplotlib(3.10.6), scanpy(1.9.3), scipy(1.13.0), seaborn(0.13.2), numpy(1.26.4), pandas(2.2.2), sceasy(0.0.7)
@@ -138,7 +127,6 @@ The following command-line tools are required for certain preprocessing steps:
 **R (v4.4.0)**: dplyr(1.1.4), tidyr(1.3.1), Seurat(5.3.0), DecontX(1.4.1), SoupX(1.6.2), scCDC(1.3), CellClear(0.0.3), ggplot2(3.3.6), seuratobject(5.0.0), reticulate(1.42.0), DropletUtils(1.22.0), rhdf5(2.46.1), ggrepel(0.9.6), ggbreak(0.1.6)
 
 **Other tools**: picard(3.4.0), gatk4(4.6.2.0), samtools(1.22.1)
-
 
 ## 📧 Contact
 
