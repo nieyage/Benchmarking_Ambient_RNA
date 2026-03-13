@@ -81,10 +81,6 @@ pip install cellbender==0.3.0
 ## scAR
 pip install scar==0.7.0
 
-## FastCAR
-# Installation instructions may vary; refer to its repository.
-# Assuming it's available via pip:
-pip install FastCAR==0.1.0
 ```
 ### R Environment
 
@@ -116,6 +112,10 @@ devtools::install_github("Czi-Y/scCDC") # Please verify the correct repository
 ## CellClear (v0.0.3)
 # Installation instruction for CellClear - typically from GitHub
 devtools::install_github("xx/info/cellclear") # Please verify the correct repository
+
+## FastCAR
+devtools::install_git("https://git.web.rug.nl/P278949/FastCAR")
+
 ```
 ### Other Tools
 
